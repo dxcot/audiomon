@@ -25,9 +25,9 @@
     <string name="action_hide_details">Ocultar</string>
     <string name="action_help">Ayuda</string>
 
-    <string name="msg_waiting">Abre audiorast en tu PC.</string>
+    <string name="msg_waiting">Abre audiomon en tu PC.</string>
     <string name="msg_problem">El PC dejó de responder. Revisa el cable o la Wi-Fi; se reconecta solo.</string>
-    <string name="help_1">En tu PC, abre audiorast. Su icono de altavoz está junto al reloj.</string>
+    <string name="help_1">En tu PC, abre audiomon. Su icono de altavoz está junto al reloj.</string>
     <string name="help_2">Misma Wi-Fi: el teléfono y el PC deben estar en la misma red.</string>
     <string name="help_3">O por cable: conecta el cable USB y activa el anclaje USB en los ajustes del teléfono (Zona Wi-Fi y anclaje).</string>
     <string name="msg_stopped">El sonido de tu PC sonará aquí al iniciar.</string>

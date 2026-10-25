@@ -188,7 +188,7 @@ pub fn print_output_devices() -> Result<(), Box<dyn Error>> {
             Err(e) => println!("{marker} {:<50} ({e})", device.get_friendlyname()?),
         }
     }
-    println!("(* = default output; audiorast captures from the default)");
+    println!("(* = default output; audiomon captures from the default)");
     Ok(())
 }
 

@@ -1,4 +1,4 @@
-package dev.audiorast
+package dev.audiomon
 
 /** Engine status parsed from [Native.snapshot] (`key=value` lines; unknown values are absent). */
 class Snapshot private constructor(private val values: Map<String, String>) {

@@ -12,8 +12,8 @@
     <application
         android:allowBackup="false"
         android:icon="@android:drawable/ic_media_play"
-        android:label="audiorast"
-        android:theme="@style/Theme.Audiorast">
+        android:label="audiomon"
+        android:theme="@style/Theme.Audiomon">
 
         <activity
             android:name=".MainActivity"

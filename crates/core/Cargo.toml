@@ -1,5 +1,5 @@
 [package]
-name = "audiorast-core"
+name = "audiomon-core"
 description = "Protocol, jitter buffer and drift control shared by host and receiver"
 version.workspace = true
 edition.workspace = true

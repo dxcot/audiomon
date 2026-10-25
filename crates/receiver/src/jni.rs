@@ -1,4 +1,4 @@
-//! JNI entry points for `dev.audiorast.Native` (Kotlin `object` with `@JvmStatic external` funs).
+//! JNI entry points for `dev.audiomon.Native` (Kotlin `object` with `@JvmStatic external` funs).
 
 use std::ffi::CString;
 use std::fmt::Write;
@@ -11,7 +11,7 @@ use crate::engine::Engine;
 static ENGINE: Mutex<Option<Engine>> = Mutex::new(None);
 
 #[unsafe(no_mangle)]
-pub extern "system" fn Java_dev_audiorast_Native_start(_env: *mut JNIEnv, _class: jclass) {
+pub extern "system" fn Java_dev_audiomon_Native_start(_env: *mut JNIEnv, _class: jclass) {
     crate::logger::init();
     let mut engine = ENGINE.lock().unwrap();
     if engine.is_none() {
@@ -24,8 +24,8 @@ pub extern "system" fn Java_dev_audiorast_Native_start(_env: *mut JNIEnv, _class
 
 /// Plays from a USB accessory; takes ownership of `fd` (a detached ParcelFileDescriptor).
 #[unsafe(no_mangle)]
-pub extern "system" fn Java_dev_audiorast_Native_startAccessory(env: *mut JNIEnv, class: jclass, fd: jint) {
-    Java_dev_audiorast_Native_start(env, class);
+pub extern "system" fn Java_dev_audiomon_Native_startAccessory(env: *mut JNIEnv, class: jclass, fd: jint) {
+    Java_dev_audiomon_Native_start(env, class);
     match ENGINE.lock().unwrap().as_ref() {
         Some(engine) => {
             if let Err(e) = engine.attach_accessory(fd) {
@@ -37,14 +37,14 @@ pub extern "system" fn Java_dev_audiorast_Native_startAccessory(env: *mut JNIEnv
 }
 
 #[unsafe(no_mangle)]
-pub extern "system" fn Java_dev_audiorast_Native_stop(_env: *mut JNIEnv, _class: jclass) {
+pub extern "system" fn Java_dev_audiomon_Native_stop(_env: *mut JNIEnv, _class: jclass) {
     ENGINE.lock().unwrap().take();
 }
 
 /// Current status as `key=value` lines, for the app to lay out (see `Snapshot.kt`).
 /// Keys whose value is unknown are left out.
 #[unsafe(no_mangle)]
-pub extern "system" fn Java_dev_audiorast_Native_snapshot(env: *mut JNIEnv, _class: jclass) -> jstring {
+pub extern "system" fn Java_dev_audiomon_Native_snapshot(env: *mut JNIEnv, _class: jclass) -> jstring {
     let text = match ENGINE.lock().unwrap().as_ref() {
         Some(e) => snapshot(e),
         None => "state=stopped\n".to_string(),

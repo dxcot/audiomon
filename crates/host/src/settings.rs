@@ -6,9 +6,9 @@ use windows::Win32::System::Registry::{
 };
 use windows::core::{HSTRING, PCWSTR, w};
 
-const SETTINGS_KEY: PCWSTR = w!("Software\\audiorast");
+const SETTINGS_KEY: PCWSTR = w!("Software\\audiomon");
 const RUN_KEY: PCWSTR = w!("Software\\Microsoft\\Windows\\CurrentVersion\\Run");
-const RUN_VALUE: PCWSTR = w!("audiorast");
+const RUN_VALUE: PCWSTR = w!("audiomon");
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Transport {

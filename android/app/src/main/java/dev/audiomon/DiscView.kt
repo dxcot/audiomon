@@ -1,4 +1,4 @@
-package dev.audiorast
+package dev.audiomon
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter

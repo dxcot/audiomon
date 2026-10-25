@@ -10,9 +10,9 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::thread;
 use std::time::{Duration, Instant};
 
-use audiorast_core::control::{Hello, Ping, Pong};
-use audiorast_core::packet::{self, Header};
-use audiorast_core::stream::{self, Deframer, KIND_AUDIO, KIND_HELLO, KIND_PING, KIND_PONG, KIND_STATS};
+use audiomon_core::control::{Hello, Ping, Pong};
+use audiomon_core::packet::{self, Header};
+use audiomon_core::stream::{self, Deframer, KIND_AUDIO, KIND_HELLO, KIND_PING, KIND_PONG, KIND_STATS};
 use rusb::{Context, Device, DeviceHandle, Direction, TransferType, UsbContext};
 
 use crate::capture::{self, Capture};
@@ -23,7 +23,7 @@ const GOOGLE_VID: u16 = 0x18D1;
 const ACCESSORY_PIDS: std::ops::RangeInclusive<u16> = 0x2D00..=0x2D05;
 const CONTROL_TIMEOUT: Duration = Duration::from_secs(1);
 /// Strings the phone app's accessory filter matches (see accessory_filter.xml).
-const IDENTITY: [&str; 6] = ["audiorast", "audiorast", "PC audio over USB", "1", "", "1"];
+const IDENTITY: [&str; 6] = ["audiomon", "audiomon", "PC audio over USB", "1", "", "1"];
 
 /// Streams over direct USB, reconnecting after unplugs and errors, until `quit` is set.
 pub fn run(quit: &AtomicBool) {
@@ -142,7 +142,7 @@ fn stream(handle: &DeviceHandle<Context>, ep_in: u8, ep_out: u8, quit: &AtomicBo
         }
         match handle.write_bulk(ep_out, &frame, Duration::from_secs(1)) {
             Ok(_) => break,
-            Err(rusb::Error::Timeout) => status::set("Connected by USB, waiting for the audiorast app on the phone"),
+            Err(rusb::Error::Timeout) => status::set("Connected by USB, waiting for the audiomon app on the phone"),
             Err(e) => return Err(e.into()),
         }
     }

@@ -15,13 +15,13 @@ use std::sync::{Arc, Mutex};
 use std::thread::{self, JoinHandle};
 use std::time::{Duration, Instant};
 
-use audiorast_core::control::{Accept, ClockSync, Hello, Ping, Pong, Status};
-use audiorast_core::depacketizer::{Depacketizer, DepacketizerStats};
-use audiorast_core::jitter::DelayHistogram;
-use audiorast_core::packet::Header;
-use audiorast_core::playout::{Playout, PlayoutConfig, PlayoutStats};
-use audiorast_core::stream::{self as stream_frame, Deframer, KIND_AUDIO, KIND_HELLO, KIND_PING, KIND_PONG, KIND_STATS};
-use audiorast_core::{
+use audiomon_core::control::{Accept, ClockSync, Hello, Ping, Pong, Status};
+use audiomon_core::depacketizer::{Depacketizer, DepacketizerStats};
+use audiomon_core::jitter::DelayHistogram;
+use audiomon_core::packet::Header;
+use audiomon_core::playout::{Playout, PlayoutConfig, PlayoutStats};
+use audiomon_core::stream::{self as stream_frame, Deframer, KIND_AUDIO, KIND_HELLO, KIND_PING, KIND_PONG, KIND_STATS};
+use audiomon_core::{
     AUDIO_PORT, CONTROL_PORT, DISCOVERY_PORT, DISCOVERY_REPLY, DISCOVERY_REQUEST, PROTO_VERSION, SampleSink, SampleSource,
 };
 
@@ -550,7 +550,7 @@ fn accessory_session(fd: RawFd, shared: &Arc<Shared>) -> io::Result<()> {
     result
 }
 
-/// One logcat line per call, for reading results with `adb logcat -s audiorast`.
+/// One logcat line per call, for reading results with `adb logcat -s audiomon`.
 fn log_summary(shared: &Shared) -> String {
     let text = summary(shared);
     log::info!("{text}");

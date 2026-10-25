@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    namespace = "dev.audiorast"
+    namespace = "dev.audiomon"
     compileSdk = 36
     ndkVersion = "30.0.16248370"
 
     defaultConfig {
-        applicationId = "dev.audiorast"
+        applicationId = "dev.audiomon"
         minSdk = 28
         targetSdk = 36
         versionCode = 1
@@ -38,7 +38,7 @@ val cargoBuild = tasks.register<Exec>("cargoBuild") {
         "-t", "arm64-v8a", "-t", "armeabi-v7a",
         "--platform", "28",
         "-o", file("src/main/jniLibs").absolutePath,
-        "build", "--release", "-p", "audiorast-receiver",
+        "build", "--release", "-p", "audiomon-receiver",
     )
 }
 

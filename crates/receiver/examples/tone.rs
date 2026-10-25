@@ -2,14 +2,14 @@
 //!
 //! Build and run from the PC:
 //! ```text
-//! cargo ndk -t arm64-v8a --platform 28 build --release -p audiorast-receiver --example tone
+//! cargo ndk -t arm64-v8a --platform 28 build --release -p audiomon-receiver --example tone
 //! adb push target/aarch64-linux-android/release/examples/tone /data/local/tmp/
 //! adb shell /data/local/tmp/tone [seconds] [shared] [bursts]
 //! ```
 
 #[cfg(target_os = "android")]
 fn main() {
-    use audiorast::aaudio::{Config, OutputStream};
+    use audiomon::aaudio::{Config, OutputStream};
     use std::time::Duration;
 
     let args: Vec<String> = std::env::args().skip(1).collect();

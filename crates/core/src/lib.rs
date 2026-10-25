@@ -1,4 +1,4 @@
-//! Shared, OS-independent logic for audiorast.
+//! Shared, OS-independent logic for audiomon.
 //!
 //! Receiver pipeline:
 //! `UDP datagram → Depacketizer → SampleSink (ring buffer) → SampleSource → Playout → audio device`.
@@ -20,8 +20,8 @@ pub const AUDIO_PORT: u16 = 47801;
 /// UDP port where the phone answers discovery broadcasts from PCs on the same network.
 pub const DISCOVERY_PORT: u16 = 47802;
 /// Discovery request (PC → broadcast) and answer (phone → PC).
-pub const DISCOVERY_REQUEST: &[u8] = b"ARST?1";
-pub const DISCOVERY_REPLY: &[u8] = b"ARST!1";
+pub const DISCOVERY_REQUEST: &[u8] = b"AMON?1";
+pub const DISCOVERY_REPLY: &[u8] = b"AMON!1";
 /// Protocol version sent in HELLO.
 pub const PROTO_VERSION: u16 = 1;
 

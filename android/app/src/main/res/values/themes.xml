@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- One dark world: the record is black vinyl, so the screen is too. -->
-    <style name="Theme.Audiorast" parent="android:Theme.DeviceDefault.NoActionBar">
+    <style name="Theme.Audiomon" parent="android:Theme.DeviceDefault.NoActionBar">
         <item name="android:windowBackground">@color/vinyl</item>
         <item name="android:colorBackground">@color/vinyl</item>
         <item name="android:textColorPrimary">@color/cream</item>
@@ -12,7 +12,7 @@
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
-    <style name="Audiorast.Button" parent="android:Widget.DeviceDefault.Button.Borderless">
+    <style name="Audiomon.Button" parent="android:Widget.DeviceDefault.Button.Borderless">
         <!-- One line always: long labels or large font sizes shrink instead of wrapping,
              so the two buttons of a row stay the same height and aligned. -->
         <item name="android:maxLines">1</item>
@@ -28,12 +28,12 @@
         <item name="android:stateListAnimator">@null</item>
     </style>
 
-    <style name="Audiorast.Button.Filled">
+    <style name="Audiomon.Button.Filled">
         <item name="android:background">@drawable/button_filled</item>
         <item name="android:textColor">@color/vinyl</item>
     </style>
 
-    <style name="Audiorast.Button.Outlined">
+    <style name="Audiomon.Button.Outlined">
         <item name="android:background">@drawable/button_outlined</item>
         <item name="android:textColor">@color/cream</item>
     </style>

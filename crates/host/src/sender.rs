@@ -8,9 +8,9 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::thread;
 use std::time::{Duration, Instant};
 
-use audiorast_core::control::{Accept, Hello, Ping, Pong, Status};
-use audiorast_core::packet::{self, Header};
-use audiorast_core::{AUDIO_PORT, CONTROL_PORT};
+use audiomon_core::control::{Accept, Hello, Ping, Pong, Status};
+use audiomon_core::packet::{self, Header};
+use audiomon_core::{AUDIO_PORT, CONTROL_PORT};
 
 use crate::capture::{self, Capture};
 use crate::discover::{self, Candidate, Link};
@@ -21,7 +21,7 @@ use crate::status;
 pub fn run(phone: Option<Ipv4Addr>, quit: &AtomicBool) {
     while !quit.load(Ordering::Relaxed) {
         let Some((conn, ip, link)) = connect(phone) else {
-            status::set("Looking for the phone: open the audiorast app on it (same Wi-Fi, or USB tethering on)");
+            status::set("Looking for the phone: open the audiomon app on it (same Wi-Fi, or USB tethering on)");
             thread::sleep(Duration::from_secs(1));
             continue;
         };

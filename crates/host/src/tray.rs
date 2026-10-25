@@ -17,7 +17,7 @@ const BLUE: [u8; 3] = [0x2E, 0x86, 0xDE];
 const GREY: [u8; 3] = [0x8A, 0x8F, 0x98];
 
 use crate::settings::{self, Transport};
-use crate::{sender, status, usb};
+use crate::{glyph, sender, status, usb};
 
 /// Streaming worker for one transport; replaced when the user switches transports.
 struct Worker {
@@ -52,13 +52,13 @@ impl Worker {
 
 pub fn run() -> Result<(), Box<dyn std::error::Error>> {
     // One instance per user session: a second one would fight over the audio and USB device.
-    let _instance = unsafe { CreateMutexW(None, false, w!("Local\\audiorast-tray")) }?;
+    let _instance = unsafe { CreateMutexW(None, false, w!("Local\\audiomon-tray")) }?;
     if unsafe { GetLastError() } == ERROR_ALREADY_EXISTS {
         unsafe {
             MessageBoxW(
                 None,
-                w!("audiorast is already running.\n\nLook for the speaker icon near the clock (it may be behind the ^ arrow). Click it to see the status or quit."),
-                w!("audiorast"),
+                w!("audiomon is already running.\n\nLook for the speaker icon near the clock (it may be behind the ^ arrow). Click it to see the status or quit."),
+                w!("audiomon"),
                 MB_OK | MB_ICONINFORMATION,
             );
         }
@@ -86,7 +86,7 @@ pub fn run() -> Result<(), Box<dyn std::error::Error>> {
     ])?;
     let tray = TrayIconBuilder::new()
         .with_menu(Box::new(menu))
-        .with_tooltip("audiorast")
+        .with_tooltip("audiomon")
         .with_icon(speaker_icon(GREY))
         // Left click opens the menu too: its first line is the status.
         .with_menu_on_left_click(true)
@@ -135,7 +135,7 @@ pub fn run() -> Result<(), Box<dyn std::error::Error>> {
         let current = status::get();
         if current != shown {
             status_item.set_text(&current);
-            let _ = tray.set_tooltip(Some(format!("audiorast: {current}")));
+            let _ = tray.set_tooltip(Some(format!("audiomon: {current}")));
             // Blue while audio is flowing, grey otherwise.
             let now_streaming = current.starts_with("Streaming");
             if now_streaming != streaming {
@@ -148,25 +148,8 @@ pub fn run() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-/// 32×32 speaker glyph with sound waves, drawn in code to avoid shipping image files.
-fn speaker_icon([red, green, blue]: [u8; 3]) -> Icon {
-    const N: usize = 32;
-    let mut rgba = vec![0u8; N * N * 4];
-    for y in 0..N {
-        for x in 0..N {
-            let (fx, fy) = (x as f32 + 0.5, y as f32 + 0.5);
-            let dy = (fy - 16.0).abs();
-            // Speaker body: a small box and a cone widening to the right.
-            let body = (3.0..9.0).contains(&fx) && dy < 5.0;
-            let cone = (9.0..17.0).contains(&fx) && dy < 5.0 + (fx - 9.0);
-            // Two sound-wave arcs centred on the cone.
-            let r = ((fx - 12.0).powi(2) + (fy - 16.0).powi(2)).sqrt();
-            let wave = fx > 18.0 && ((r - 10.5).abs() < 1.3 || (r - 15.5).abs() < 1.3) && dy < r * 0.75;
-            if body || cone || wave {
-                let i = (y * N + x) * 4;
-                rgba[i..i + 4].copy_from_slice(&[red, green, blue, 0xFF]);
-            }
-        }
-    }
-    Icon::from_rgba(rgba, N as u32, N as u32).expect("valid icon size")
+/// The speaker glyph (see glyph.rs) at tray size.
+fn speaker_icon(color: [u8; 3]) -> Icon {
+    const N: u32 = 32;
+    Icon::from_rgba(glyph::speaker_rgba(N, color), N, N).expect("valid icon size")
 }

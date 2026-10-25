@@ -1,4 +1,4 @@
-package dev.audiorast
+package dev.audiomon
 
 import android.Manifest
 import android.app.Activity
@@ -120,7 +120,7 @@ class MainActivity : Activity() {
     private fun openAttachedAccessory() {
         if (accessoryOpen) return
         val usb = getSystemService(UsbManager::class.java)
-        val accessory = usb.accessoryList?.firstOrNull { it.manufacturer == "audiorast" } ?: return
+        val accessory = usb.accessoryList?.firstOrNull { it.manufacturer == "audiomon" } ?: return
         if (usb.hasPermission(accessory)) open(accessory)
     }
 

@@ -6,8 +6,8 @@ use std::io::{self, Read, Write};
 
 use crate::PROTO_VERSION;
 
-const HELLO_MAGIC: &[u8; 4] = b"ARST";
-const ACCEPT_MAGIC: &[u8; 4] = b"ARSA";
+const HELLO_MAGIC: &[u8; 4] = b"AMON";
+const ACCEPT_MAGIC: &[u8; 4] = b"AMOA";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Hello {
@@ -38,7 +38,7 @@ impl Hello {
         let mut b = [0u8; Self::LEN];
         r.read_exact(&mut b)?;
         if &b[0..4] != HELLO_MAGIC {
-            return Err(io::Error::new(io::ErrorKind::InvalidData, "not an audiorast host"));
+            return Err(io::Error::new(io::ErrorKind::InvalidData, "not an audiomon host"));
         }
         Ok(Self {
             version: u16::from_le_bytes([b[4], b[5]]),
@@ -79,7 +79,7 @@ impl Accept {
         let mut b = [0u8; Self::LEN];
         r.read_exact(&mut b)?;
         if &b[0..4] != ACCEPT_MAGIC {
-            return Err(io::Error::new(io::ErrorKind::InvalidData, "not an audiorast receiver"));
+            return Err(io::Error::new(io::ErrorKind::InvalidData, "not an audiomon receiver"));
         }
         let status = match u16::from_le_bytes([b[6], b[7]]) {
             0 => Status::Ok,

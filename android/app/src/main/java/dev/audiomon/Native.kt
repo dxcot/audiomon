@@ -1,9 +1,9 @@
-package dev.audiorast
+package dev.audiomon
 
-/** Bridge to the Rust engine in libaudiorast.so (crates/receiver/src/jni.rs). */
+/** Bridge to the Rust engine in libaudiomon.so (crates/receiver/src/jni.rs). */
 object Native {
     init {
-        System.loadLibrary("audiorast")
+        System.loadLibrary("audiomon")
     }
 
     /** Starts listening for the PC. Safe to call twice. */

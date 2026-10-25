@@ -5,7 +5,7 @@
 use std::net::{Ipv4Addr, SocketAddrV4, UdpSocket};
 use std::time::{Duration, Instant};
 
-use audiorast_core::{DISCOVERY_PORT, DISCOVERY_REPLY, DISCOVERY_REQUEST};
+use audiomon_core::{DISCOVERY_PORT, DISCOVERY_REPLY, DISCOVERY_REQUEST};
 use windows::Win32::NetworkManagement::IpHelper::{
     GAA_FLAG_INCLUDE_GATEWAYS, GAA_FLAG_SKIP_ANYCAST, GAA_FLAG_SKIP_DNS_SERVER, GAA_FLAG_SKIP_MULTICAST,
     GetAdaptersAddresses, IP_ADAPTER_ADDRESSES_LH,

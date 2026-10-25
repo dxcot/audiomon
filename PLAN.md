@@ -1,4 +1,4 @@
-# audiorast: use an Android phone as your PC's speaker over USB
+# audiomon: use an Android phone as your PC's speaker over USB
 
 ## Goal
 Two native apps written in Rust. A Windows **`.exe`** captures everything the PC plays and
@@ -85,14 +85,14 @@ Audio (UDP, port 47801), one datagram per capture packet (~10 ms = 480 frames = 
 ## 3. Architecture
 
 ```
-┌──────────────── Windows: audiorast.exe ────────────────┐
+┌──────────────── Windows: audiomon.exe ────────────────┐
 │ WASAPI loopback (MMCSS thread)                         │
 │   → convert → UDP send ─────────────┐                  │
 │ tether-adapter discovery            │  control (TCP)   │
 │ tray icon: status / latency / quit  │                  │
 └─────────────────────────────────────┼──────────────────┘
                                       │ USB cable (RNDIS/NCM)
-┌──────────────── Android: audiorast.apk ┼───────────────┐
+┌──────────────── Android: audiomon.apk ┼───────────────┐
 │ UDP recv thread → jitter buffer ◄─ drift controller    │
 │                       ▼                                │
 │        AAudio callback (Oboe, exclusive, low latency)  │
@@ -102,7 +102,7 @@ Audio (UDP, port 47801), one datagram per capture packet (~10 ms = 480 frames = 
 
 ### Repository layout
 ```
-audiorast/
+audiomon/
 ├── Cargo.toml              # workspace
 ├── crates/
 │   ├── core/               # protocol, jitter buffer, drift control (pure Rust, no OS deps, heavily tested)
@@ -138,7 +138,7 @@ Release profile: `opt-level=3`, `lto="fat"`, `codegen-units=1`, `panic="abort"`,
 
 ### Phase 1: Capture spike (1 day)
 - `host`: WASAPI loopback → 10 s WAV file. Confirm the format, packet period, and CPU use.
-- ✅ **Done** (`audiorast record [secs] [file]`). Measured on a USB audio output device:
+- ✅ **Done** (`audiomon record [secs] [file]`). Measured on a USB audio output device:
   48 kHz f32 stereo, **480 frames (10.00 ms) per packet, every 9.8–10.2 ms**, 0 dropped packets,
   CPU below the timer resolution (<0.3%), release exe 282 KB.
   The device reports a 3 ms minimum period, but loopback still delivers at the engine's 10 ms period.
@@ -163,7 +163,7 @@ Release profile: `opt-level=3`, `lto="fat"`, `codegen-units=1`, `panic="abort"`,
 
 ### Phase 4: End-to-end MVP (3–4 days) ✅ first usable version
 - Host discovers the tether adapter and sends audio; the phone plays it.
-- Console host: `audiorast.exe` prints status and latency.
+- Console host: `audiomon.exe` prints status and latency.
 - **Milestone:** a YouTube video on the PC plays from the phone, in sync.
 - ✅ **Working** on the reference phone over RNDIS tethering: auto-discovery, exclusive MMAP output (9–10 ms),
   0 lost datagrams. After 70 s: buffer margin 11.9 ms, drift estimate still settling (+219 ppm),
@@ -184,7 +184,7 @@ Release profile: `opt-level=3`, `lto="fat"`, `codegen-units=1`, `panic="abort"`,
 ### Later
 - Wi-Fi mode (Opus codec).
 - Several phones at once (left/right stereo).
-- A Windows virtual audio driver, so audiorast shows up as a "speaker" in Windows' sound list.
+- A Windows virtual audio driver, so audiomon shows up as a "speaker" in Windows' sound list.
 
 ---
 

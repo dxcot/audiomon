@@ -8,11 +8,11 @@ edition = "2024"
 license = "MIT OR Apache-2.0"
 
 [workspace.dependencies]
-audiorast-core = { path = "crates/core" }
+audiomon-core = { path = "crates/core" }
 log = "0.4"
 
 # The core simulation tests process minutes of audio; keep them fast in debug builds.
-[profile.dev.package.audiorast-core]
+[profile.dev.package.audiomon-core]
 opt-level = 3
 
 [profile.release]

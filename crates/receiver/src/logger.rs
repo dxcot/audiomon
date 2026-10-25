@@ -1,8 +1,8 @@
-//! `log` backend writing to Android logcat (tag "audiorast").
+//! `log` backend writing to Android logcat (tag "audiomon").
 
 use std::ffi::{CString, c_char, c_int};
 
-const TAG: &[u8] = b"audiorast\0";
+const TAG: &[u8] = b"audiomon\0";
 
 #[link(name = "log")]
 unsafe extern "C" {

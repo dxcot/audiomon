@@ -1,4 +1,4 @@
-package dev.audiorast
+package dev.audiomon
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -26,7 +26,7 @@ class AudioService : Service() {
             this, 0, Intent(this, MainActivity::class.java), PendingIntent.FLAG_IMMUTABLE,
         )
         val notification = Notification.Builder(this, CHANNEL)
-            .setContentTitle("audiorast")
+            .setContentTitle("audiomon")
             .setContentText(getString(R.string.notif_text))
             .setSmallIcon(android.R.drawable.ic_media_play)
             .setContentIntent(open)
@@ -35,7 +35,7 @@ class AudioService : Service() {
         startForeground(1, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK)
 
         wakeLock = getSystemService(PowerManager::class.java)
-            .newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "audiorast:stream")
+            .newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "audiomon:stream")
             .apply { acquire() }
         Native.start()
         running = true

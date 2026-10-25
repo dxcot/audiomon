@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "audiorast"
+rootProject.name = "audiomon"
 include(":app")

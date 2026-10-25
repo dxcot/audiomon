@@ -1,4 +1,4 @@
-//! Android receiver engine, loaded by the Kotlin app as `libaudiorast.so`.
+//! Android receiver engine, loaded by the Kotlin app as `libaudiomon.so`.
 
 #[cfg(target_os = "android")]
 pub mod aaudio;
@@ -9,4 +9,4 @@ mod jni;
 #[cfg(target_os = "android")]
 mod logger;
 
-pub use audiorast_core::PROTO_VERSION;
+pub use audiomon_core::PROTO_VERSION;

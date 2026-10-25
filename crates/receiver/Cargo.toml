@@ -1,16 +1,16 @@
 [package]
-name = "audiorast-receiver"
+name = "audiomon-receiver"
 description = "Android receiver engine (loaded by the Kotlin app via JNI)"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
 
 [lib]
-name = "audiorast"
+name = "audiomon"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-audiorast-core.workspace = true
+audiomon-core.workspace = true
 log.workspace = true
 rtrb = "0.4.0"
 

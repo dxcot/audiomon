@@ -44,7 +44,7 @@
                 android:textSize="13sp" />
         </LinearLayout>
 
-        <dev.audiorast.DiscView
+        <dev.audiomon.DiscView
             android:id="@+id/disc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -118,14 +118,14 @@
 
             <Button
                 android:id="@+id/primary"
-                style="@style/Audiorast.Button.Filled"
+                style="@style/Audiomon.Button.Filled"
                 android:layout_width="0dp"
                 android:layout_height="52dp"
                 android:layout_weight="1" />
 
             <Button
                 android:id="@+id/details_toggle"
-                style="@style/Audiorast.Button.Outlined"
+                style="@style/Audiomon.Button.Outlined"
                 android:layout_width="0dp"
                 android:layout_height="52dp"
                 android:layout_marginStart="12dp"

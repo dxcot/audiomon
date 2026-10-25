@@ -3,11 +3,11 @@
 
 use std::collections::VecDeque;
 
-use audiorast_core::SampleSource;
-use audiorast_core::depacketizer::Depacketizer;
-use audiorast_core::jitter::DelayHistogram;
-use audiorast_core::packet::{Header, encode};
-use audiorast_core::playout::{Playout, PlayoutConfig};
+use audiomon_core::SampleSource;
+use audiomon_core::depacketizer::Depacketizer;
+use audiomon_core::jitter::DelayHistogram;
+use audiomon_core::packet::{Header, encode};
+use audiomon_core::playout::{Playout, PlayoutConfig};
 
 const RATE: f64 = 48_000.0;
 const PACKET: usize = 480;

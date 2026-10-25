@@ -4,6 +4,7 @@
 
 mod capture;
 mod discover;
+mod glyph;
 mod sender;
 mod settings;
 mod status;
@@ -21,13 +22,13 @@ use windows::Win32::System::Console::{ATTACH_PARENT_PROCESS, AttachConsole, GetS
 use windows::Win32::System::Threading::{GetCurrentProcess, GetProcessTimes};
 
 const USAGE: &str = "usage:
-  audiorast                    tray app: stream PC audio to the phone in the background
-  audiorast stream             stream over USB tethering in this terminal
-  audiorast --phone <ip>       stream to a phone at a known address
-  audiorast usb                stream over direct USB (Android accessory mode)
-  audiorast devices            list phones found over USB tethering or Wi-Fi
-  audiorast outputs            list PC output devices and their latency capability
-  audiorast record [secs] [file.wav]   capture system audio to a file";
+  audiomon                    tray app: stream PC audio to the phone in the background
+  audiomon stream             stream over USB tethering in this terminal
+  audiomon --phone <ip>       stream to a phone at a known address
+  audiomon usb                stream over direct USB (Android accessory mode)
+  audiomon devices            list phones found over USB tethering or Wi-Fi
+  audiomon outputs            list PC output devices and their latency capability
+  audiomon record [secs] [file.wav]   capture system audio to a file";
 
 fn main() {
     if std::env::var_os("RUST_LOG").is_none() {
@@ -68,7 +69,7 @@ fn main() {
             let mut found = discover::candidates();
             found.extend(discover::lan_phones(Duration::from_millis(500)));
             if found.is_empty() {
-                println!("No phone found. Open the audiorast app on the phone (same Wi-Fi, or USB tethering on).");
+                println!("No phone found. Open the audiomon app on the phone (same Wi-Fi, or USB tethering on).");
             }
             for c in found {
                 println!("{}  via {} ({})", c.ip, c.link.label(), c.adapter);
@@ -84,7 +85,7 @@ fn main() {
             record(secs, path)
         }
         _ => {
-            eprintln!("audiorast {}\n{USAGE}", env!("CARGO_PKG_VERSION"));
+            eprintln!("audiomon {}\n{USAGE}", env!("CARGO_PKG_VERSION"));
             std::process::exit(2);
         }
     };
@@ -228,12 +229,12 @@ fn attach_console() {
     }
 }
 
-/// The tray app has no terminal: log to `%LOCALAPPDATA%\audiorast\audiorast.log` (fresh each run).
+/// The tray app has no terminal: log to `%LOCALAPPDATA%\audiomon\audiomon.log` (fresh each run).
 fn init_file_log() {
     let mut builder = env_logger::Builder::from_default_env();
-    if let Some(dir) = std::env::var_os("LOCALAPPDATA").map(|d| std::path::Path::new(&d).join("audiorast"))
+    if let Some(dir) = std::env::var_os("LOCALAPPDATA").map(|d| std::path::Path::new(&d).join("audiomon"))
         && std::fs::create_dir_all(&dir).is_ok()
-        && let Ok(file) = std::fs::File::create(dir.join("audiorast.log"))
+        && let Ok(file) = std::fs::File::create(dir.join("audiomon.log"))
     {
         builder.target(env_logger::Target::Pipe(Box::new(file)));
     }
