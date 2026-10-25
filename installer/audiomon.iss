@@ -11,8 +11,8 @@ AppName=audiomon
 AppVersion={#AppVersion}
 AppVerName=audiomon {#AppVersion}
 AppPublisher=audiomon contributors
-AppPublisherURL=https://github.com/nk-rg/audiomon
-AppSupportURL=https://github.com/nk-rg/audiomon/issues
+AppPublisherURL=https://github.com/dxcot/audiomon
+AppSupportURL=https://github.com/dxcot/audiomon/issues
 ; Per-user install: no administrator prompt; {autopf} resolves to the user's Programs folder.
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
