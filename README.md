@@ -21,7 +21,7 @@ Play anything on the PC; it comes out of the phone. The phone screen shows wheth
 
 > Android does not let apps switch USB tethering on by themselves, so that one toggle is up to you.
 
-There are no prebuilt downloads yet; see [Building from source](#building-from-source).
+**Download:** the Windows installer and the Android app are on the [Releases page](https://github.com/dxcot/audiomon/releases/latest). See [PRIVACY.md](PRIVACY.md) for what the apps do (and don't do) with data.
 
 ## How it works
 
