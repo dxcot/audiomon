@@ -4,6 +4,12 @@
 
 No speakers on your computer? audiomon plays everything your Windows PC plays (videos, music, games) through your phone, over the USB cable or your Wi-Fi, with as little delay as the hardware allows.
 
+<p align="center">
+  <img src="store/screenshots/en/1-playing.png" width="260" alt="Playing over Wi-Fi with 33 ms of delay">
+  <img src="store/screenshots/en/2-details.png" width="260" alt="Details: where the delay comes from">
+  <img src="store/screenshots/en/3-help.png" width="260" alt="Waiting for the PC, with connection help">
+</p>
+
 - **Low delay.** About 25–30 ms from PC to phone speaker over USB tethering on the reference setup, low enough for videos to stay in sync. Wi-Fi works too, with a bit more delay depending on the network.
 - **No setup.** Open the app on the phone and audiomon on the PC: they find each other by themselves. If the USB cable and USB tethering are on, it switches to the faster link automatically.
 - **Light.** The PC app is a small tray icon that uses under 1% CPU. The phone app spends no power on animations, so it can play for hours with the screen locked.
