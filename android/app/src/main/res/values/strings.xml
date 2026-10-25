@@ -29,7 +29,7 @@
 
     <string name="msg_waiting">Open audiomon on your PC.</string>
     <string name="msg_problem">The PC stopped answering. Check the cable or the Wi-Fi; it reconnects by itself.</string>
-    <string name="help_1">On your PC, open audiomon. Its speaker icon sits near the clock.</string>
+    <string name="help_1">On your PC, open audiomon. Its record icon sits near the clock.</string>
     <string name="help_2">Same Wi-Fi: keep the phone and the PC on the same network.</string>
     <string name="help_3">Or by cable: plug in the USB cable and turn on USB tethering in your phone\'s settings (Hotspot and tethering).</string>
     <string name="msg_stopped">Your PC\'s sound plays here once you start.</string>

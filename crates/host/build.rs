@@ -1,12 +1,12 @@
 //! Embeds the app icon (generated from src/glyph.rs) and version info into audiomon.exe.
 
+// The tray uses the idle style too; the build script only needs the app icon.
+#[allow(dead_code)]
 #[path = "src/glyph.rs"]
 mod glyph;
 
 use std::path::PathBuf;
 
-/// The tray's streaming colour, also used for the app icon.
-const BLUE: [u8; 3] = [0x2E, 0x86, 0xDE];
 const SIZES: [u32; 6] = [16, 24, 32, 48, 64, 256];
 
 fn main() {
@@ -49,7 +49,7 @@ fn ico_file(sizes: &[u32]) -> Vec<u8> {
 
 /// BITMAPINFOHEADER + bottom-up BGRA pixels + 1-bit AND mask, as an icon image expects.
 fn bmp_image(size: u32) -> Vec<u8> {
-    let rgba = glyph::speaker_rgba(size, BLUE);
+    let rgba = glyph::record_rgba(size, glyph::Style::Live);
     let mask_row = size.div_ceil(32) * 4;
     let mut out = Vec::new();
     out.extend_from_slice(&40u32.to_le_bytes());

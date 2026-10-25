@@ -28,7 +28,7 @@ class AudioService : Service() {
         val notification = Notification.Builder(this, CHANNEL)
             .setContentTitle("audiomon")
             .setContentText(getString(R.string.notif_text))
-            .setSmallIcon(android.R.drawable.ic_media_play)
+            .setSmallIcon(R.drawable.ic_stat_audiomon)
             .setContentIntent(open)
             .setOngoing(true)
             .build()

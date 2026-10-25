@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The record on the launcher: black vinyl with grooves, navy label, gold rim; the spindle
+     hole shows the cream background. Sized to the 66dp adaptive-icon safe zone. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Vinyl -->
+    <path
+        android:fillColor="@color/vinyl"
+        android:pathData="M22,54a32,32 0 1,0 64,0a32,32 0 1,0 -64,0z" />
+    <!-- Grooves -->
+    <path
+        android:strokeColor="#2A2A30"
+        android:strokeWidth="0.8"
+        android:pathData="M26,54a28,28 0 1,0 56,0a28,28 0 1,0 -56,0z M29,54a25,25 0 1,0 50,0a25,25 0 1,0 -50,0z M32,54a22,22 0 1,0 44,0a22,22 0 1,0 -44,0z" />
+    <!-- Label -->
+    <path
+        android:fillColor="@color/label"
+        android:pathData="M36,54a18,18 0 1,0 36,0a18,18 0 1,0 -36,0z" />
+    <!-- Gold rim -->
+    <path
+        android:strokeColor="@color/gold"
+        android:strokeWidth="1.6"
+        android:pathData="M38.5,54a15.5,15.5 0 1,0 31,0a15.5,15.5 0 1,0 -31,0z" />
+    <!-- Spindle hole -->
+    <path
+        android:fillColor="@color/cream"
+        android:pathData="M52,54a2,2 0 1,0 4,0a2,2 0 1,0 -4,0z" />
+</vector>

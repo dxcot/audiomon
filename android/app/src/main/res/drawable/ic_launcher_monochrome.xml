@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Themed-icon silhouette (Android 13+ tints it): the disc, a ring for the label rim,
+     and the spindle hole, using even-odd nesting. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FF000000"
+        android:fillType="evenOdd"
+        android:pathData="M22,54a32,32 0 1,0 64,0a32,32 0 1,0 -64,0z M36,54a18,18 0 1,0 36,0a18,18 0 1,0 -36,0z M38.5,54a15.5,15.5 0 1,0 31,0a15.5,15.5 0 1,0 -31,0z M40.5,54a13.5,13.5 0 1,0 27,0a13.5,13.5 0 1,0 -27,0z M51.5,54a2.5,2.5 0 1,0 5,0a2.5,2.5 0 1,0 -5,0z" />
+</vector>

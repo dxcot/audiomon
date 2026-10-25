@@ -13,11 +13,10 @@ use windows::Win32::UI::WindowsAndMessaging::{
 };
 use windows::core::w;
 
-const BLUE: [u8; 3] = [0x2E, 0x86, 0xDE];
-const GREY: [u8; 3] = [0x8A, 0x8F, 0x98];
 
 use crate::settings::{self, Transport};
-use crate::{glyph, sender, status, usb};
+use crate::glyph::{self, Style};
+use crate::{sender, status, usb};
 
 /// Streaming worker for one transport; replaced when the user switches transports.
 struct Worker {
@@ -57,7 +56,7 @@ pub fn run() -> Result<(), Box<dyn std::error::Error>> {
         unsafe {
             MessageBoxW(
                 None,
-                w!("audiomon is already running.\n\nLook for the speaker icon near the clock (it may be behind the ^ arrow). Click it to see the status or quit."),
+                w!("audiomon is already running.\n\nLook for the record icon near the clock (it may be behind the ^ arrow). Click it to see the status or quit."),
                 w!("audiomon"),
                 MB_OK | MB_ICONINFORMATION,
             );
@@ -87,7 +86,7 @@ pub fn run() -> Result<(), Box<dyn std::error::Error>> {
     let tray = TrayIconBuilder::new()
         .with_menu(Box::new(menu))
         .with_tooltip("audiomon")
-        .with_icon(speaker_icon(GREY))
+        .with_icon(record_icon(Style::Idle))
         // Left click opens the menu too: its first line is the status.
         .with_menu_on_left_click(true)
         .build()?;
@@ -136,11 +135,11 @@ pub fn run() -> Result<(), Box<dyn std::error::Error>> {
         if current != shown {
             status_item.set_text(&current);
             let _ = tray.set_tooltip(Some(format!("audiomon: {current}")));
-            // Blue while audio is flowing, grey otherwise.
+            // Navy label with gold rim while audio flows, greyed otherwise.
             let now_streaming = current.starts_with("Streaming");
             if now_streaming != streaming {
                 streaming = now_streaming;
-                let _ = tray.set_icon(Some(speaker_icon(if streaming { BLUE } else { GREY })));
+                let _ = tray.set_icon(Some(record_icon(if streaming { Style::Live } else { Style::Idle })));
             }
             shown = current;
         }
@@ -148,8 +147,8 @@ pub fn run() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-/// The speaker glyph (see glyph.rs) at tray size.
-fn speaker_icon(color: [u8; 3]) -> Icon {
+/// The record icon (see glyph.rs) at tray size.
+fn record_icon(style: Style) -> Icon {
     const N: u32 = 32;
-    Icon::from_rgba(glyph::speaker_rgba(N, color), N, N).expect("valid icon size")
+    Icon::from_rgba(glyph::record_rgba(N, style), N, N).expect("valid icon size")
 }

@@ -11,7 +11,8 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@android:drawable/ic_media_play"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher"
         android:label="audiomon"
         android:theme="@style/Theme.Audiomon">
 

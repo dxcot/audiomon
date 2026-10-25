@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Notification icon: a white record silhouette (disc, label ring, spindle hole). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="M2,12a10,10 0 1,0 20,0a10,10 0 1,0 -20,0z M5.4,12a6.6,6.6 0 1,0 13.2,0a6.6,6.6 0 1,0 -13.2,0z M6.6,12a5.4,5.4 0 1,0 10.8,0a5.4,5.4 0 1,0 -10.8,0z M10.4,12a1.6,1.6 0 1,0 3.2,0a1.6,1.6 0 1,0 -3.2,0z" />
+</vector>
