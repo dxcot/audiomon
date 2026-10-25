@@ -1,0 +1,8 @@
+[package]
+name = "audiorast-core"
+description = "Protocol, jitter buffer and drift control shared by host and receiver"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]

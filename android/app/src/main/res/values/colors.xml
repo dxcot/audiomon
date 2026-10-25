@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Center Label world: black vinyl, navy label printed in cream, gold only for the live link
+     and the label rim. -->
+<resources>
+    <color name="vinyl">#0E0E10</color>
+    <color name="groove_dark">#141417</color>
+    <color name="groove_light">#1D1D21</color>
+    <color name="label">#1C2547</color>
+    <color name="cream">#F2E9D8</color>
+    <!-- Secondary text on vinyl (7:1 on #0E0E10) and on the label (8:1 on #1C2547). -->
+    <color name="cream_muted">#A8A396</color>
+    <color name="label_muted">#C9C1AE</color>
+    <color name="gold">#D9A441</color>
+    <color name="rule">#2B2B30</color>
+    <!-- Non-text contrast 3.3:1 on vinyl. -->
+    <color name="outline">#6A6A72</color>
+    <color name="pressed_on_cream">#1F0E0E10</color>
+    <color name="pressed_on_vinyl">#24F2E9D8</color>
+</resources>

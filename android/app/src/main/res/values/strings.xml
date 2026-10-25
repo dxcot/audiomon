@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">audiorast</string>
+    <string name="tagline">PC sound on this phone</string>
+
+    <!-- Words printed on the record label. -->
+    <string name="label_playing">PLAYING</string>
+    <string name="label_waiting">WAITING</string>
+    <string name="label_stopped">STOPPED</string>
+    <string name="label_delay">DELAY</string>
+    <string name="label_no_pc">NO PC YET</string>
+    <string name="label_measuring">MEASURING</string>
+    <string name="label_problem">NO SIGNAL</string>
+    <string name="label_tap_start">TAP START</string>
+    <string name="label_reconnecting">RECONNECTING</string>
+    <string name="unit_ms">ms</string>
+
+    <string name="link_usb_tethering">USB tethering</string>
+    <string name="link_wifi">Wi-Fi</string>
+    <string name="link_usb_direct">Direct USB</string>
+    <string name="link_network">Network</string>
+    <string name="pc_address">PC %1$s</string>
+
+    <string name="action_stop">Stop</string>
+    <string name="action_start">Start</string>
+    <string name="action_details">Details</string>
+    <string name="action_hide_details">Hide</string>
+    <string name="action_help">Help</string>
+
+    <string name="msg_waiting">Open audiorast on your PC.</string>
+    <string name="msg_problem">The PC stopped answering. Check the cable or the Wi-Fi; it reconnects by itself.</string>
+    <string name="help_1">On your PC, open audiorast. Its speaker icon sits near the clock.</string>
+    <string name="help_2">Same Wi-Fi: keep the phone and the PC on the same network.</string>
+    <string name="help_3">Or by cable: plug in the USB cable and turn on USB tethering in your phone\'s settings (Hotspot and tethering).</string>
+    <string name="msg_stopped">Your PC\'s sound plays here once you start.</string>
+    <string name="msg_wifi_hint">For less delay, plug in the USB cable and turn on USB tethering in your phone\'s settings.</string>
+
+    <string name="details_total">Total delay</string>
+    <string name="details_capture">PC capture + link</string>
+    <string name="details_buffer">Phone buffer</string>
+    <string name="details_output">Phone output</string>
+    <string name="details_jitter">Arrival jitter</string>
+    <string name="details_margin">Safety margin</string>
+    <string name="details_drift">Clock drift</string>
+    <string name="details_dropouts">Dropouts</string>
+    <string name="details_glitches">Audio glitches</string>
+    <string name="details_lost">Lost packets</string>
+    <string name="details_mode">Audio output</string>
+    <string name="mode_exclusive">Exclusive (fastest)</string>
+    <string name="mode_shared">Shared</string>
+    <string name="value_ms">%1$s ms</string>
+    <string name="value_ppm">%1$s ppm</string>
+
+    <string name="a11y_playing">Playing. Delay %1$s milliseconds, over %2$s.</string>
+    <string name="a11y_playing_measuring">Playing over %1$s. Measuring the delay.</string>
+    <string name="a11y_waiting">Waiting for the PC.</string>
+    <string name="a11y_stopped">Stopped.</string>
+    <string name="a11y_problem">Lost the PC. Reconnecting.</string>
+
+    <string name="notif_channel">Streaming</string>
+    <string name="notif_text">Playing sound from your PC</string>
+</resources>

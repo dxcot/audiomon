@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tagline">El sonido del PC en este teléfono</string>
+
+    <string name="label_playing">SONANDO</string>
+    <string name="label_waiting">ESPERANDO</string>
+    <string name="label_stopped">DETENIDO</string>
+    <string name="label_delay">RETRASO</string>
+    <string name="label_no_pc">SIN PC</string>
+    <string name="label_measuring">MIDIENDO</string>
+    <string name="label_problem">SIN SEÑAL</string>
+    <string name="label_tap_start">TOCA INICIAR</string>
+    <string name="label_reconnecting">RECONECTANDO</string>
+    <string name="unit_ms">ms</string>
+
+    <string name="link_usb_tethering">Anclaje USB</string>
+    <string name="link_wifi">Wi-Fi</string>
+    <string name="link_usb_direct">USB directo</string>
+    <string name="link_network">Red</string>
+    <string name="pc_address">PC %1$s</string>
+
+    <string name="action_stop">Detener</string>
+    <string name="action_start">Iniciar</string>
+    <string name="action_details">Detalles</string>
+    <string name="action_hide_details">Ocultar</string>
+    <string name="action_help">Ayuda</string>
+
+    <string name="msg_waiting">Abre audiorast en tu PC.</string>
+    <string name="msg_problem">El PC dejó de responder. Revisa el cable o la Wi-Fi; se reconecta solo.</string>
+    <string name="help_1">En tu PC, abre audiorast. Su icono de altavoz está junto al reloj.</string>
+    <string name="help_2">Misma Wi-Fi: el teléfono y el PC deben estar en la misma red.</string>
+    <string name="help_3">O por cable: conecta el cable USB y activa el anclaje USB en los ajustes del teléfono (Zona Wi-Fi y anclaje).</string>
+    <string name="msg_stopped">El sonido de tu PC sonará aquí al iniciar.</string>
+    <string name="msg_wifi_hint">Para menos retraso, conecta el cable USB y activa el anclaje USB en los ajustes del teléfono.</string>
+
+    <string name="details_total">Retraso total</string>
+    <string name="details_capture">Captura del PC + enlace</string>
+    <string name="details_buffer">Búfer del teléfono</string>
+    <string name="details_output">Salida del teléfono</string>
+    <string name="details_jitter">Variación de llegada</string>
+    <string name="details_margin">Margen de seguridad</string>
+    <string name="details_drift">Deriva del reloj</string>
+    <string name="details_dropouts">Cortes</string>
+    <string name="details_glitches">Fallos de audio</string>
+    <string name="details_lost">Paquetes perdidos</string>
+    <string name="details_mode">Salida de audio</string>
+    <string name="mode_exclusive">Exclusiva (la más rápida)</string>
+    <string name="mode_shared">Compartida</string>
+    <string name="value_ms">%1$s ms</string>
+    <string name="value_ppm">%1$s ppm</string>
+
+    <string name="a11y_playing">Sonando. Retraso de %1$s milisegundos, por %2$s.</string>
+    <string name="a11y_playing_measuring">Sonando por %1$s. Midiendo el retraso.</string>
+    <string name="a11y_waiting">Esperando al PC.</string>
+    <string name="a11y_stopped">Detenido.</string>
+    <string name="a11y_problem">Se perdió el PC. Reconectando.</string>
+
+    <string name="notif_channel">Transmisión</string>
+    <string name="notif_text">Reproduciendo el sonido de tu PC</string>
+</resources>
