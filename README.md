@@ -79,7 +79,20 @@ cd android
 # app\build\outputs\apk\release\app-release.apk
 ```
 
-Create `android/local.properties` with `sdk.dir=<path to your Android SDK>` first. The release build is currently signed with the debug key.
+Create `android/local.properties` with `sdk.dir=<path to your Android SDK>` first.
+
+Release builds are signed with the key described in `android/keystore.properties` (not in the repository):
+
+```properties
+storeFile=C:/path/to/your-release.jks
+storePassword=...
+keyAlias=...
+keyPassword=...
+```
+
+Without that file the release build falls back to the debug key, which is fine for trying it out. Official audiomon APKs are signed with a certificate whose SHA-256 fingerprint is
+`7ae2151d7b4c6416c0cebf76efe01407f2d1f9673bfc25b008e0d207db0ac743`
+(check with `apksigner verify --print-certs audiomon.apk`).
 
 **Tests**
 
