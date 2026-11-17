@@ -59,6 +59,12 @@ pub fn lan_phones(wait: Duration) -> Vec<Candidate> {
     let mut sent = false;
     for a in adapters() {
         for (ip, prefix) in &a.unicast {
+            // /31 and /32 (VPNs such as Tailscale) have no broadcast address: the formula below
+            // would give our own or a peer's address, and the ICMP "port unreachable" that comes
+            // back would only add a ConnectionReset to the receive loop.
+            if *prefix >= 31 {
+                continue;
+            }
             // Directed broadcast per network: 255.255.255.255 leaves through one adapter only.
             let mask = u32::MAX.checked_shl(32 - u32::from(*prefix)).unwrap_or(0);
             let broadcast = Ipv4Addr::from(u32::from(*ip) | !mask);
@@ -74,7 +80,14 @@ pub fn lan_phones(wait: Duration) -> Vec<Candidate> {
     let mut buf = [0u8; 64];
     while let Some(left) = deadline.checked_duration_since(Instant::now()).filter(|d| !d.is_zero()) {
         let _ = socket.set_read_timeout(Some(left));
-        let Ok((n, std::net::SocketAddr::V4(from))) = socket.recv_from(&mut buf) else { break };
+        let (n, from) = match socket.recv_from(&mut buf) {
+            Ok((n, std::net::SocketAddr::V4(from))) => (n, from),
+            Ok(_) => continue,
+            // Windows reports an ICMP "port unreachable" from any of the addresses we sent to as
+            // a failed receive on this socket; the phone's reply may still be queued behind it.
+            Err(e) if e.kind() == std::io::ErrorKind::ConnectionReset => continue,
+            Err(_) => break, // timeout
+        };
         if &buf[..n] == DISCOVERY_REPLY && !found.iter().any(|c| c.ip == *from.ip()) {
             found.push(Candidate { ip: *from.ip(), link: Link::Network, adapter: "network".into() });
         }
